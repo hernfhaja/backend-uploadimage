@@ -6,6 +6,15 @@ let bodyParser = require("body-parser");
 
 const cors = require("cors");
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With,Content-Type,Accept"
+  );
+  next();
+});
+
 const { excuteQuery } = require("./src/config/dbConnetion.ts");
 
 let PORT = process.env.PORT || 5000;
@@ -31,5 +40,5 @@ app.post("/", async (req, res) => {
 //listen port
 
 app.listen(PORT, () => {
-  console.log("Server start 5000");
+  console.log("Server start");
 });
