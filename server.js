@@ -7,8 +7,7 @@ require("dotenv").config();
 const cors = require("cors");
 const { excuteQuery } = require("./src/config/dbConnetion.ts");
 
-var server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
-var server_host = process.env.YOUR_HOST || "0.0.0.0";
+let PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extends: true }));
@@ -30,9 +29,10 @@ app.post("/", async (req, res) => {
 
 //listen port
 try {
-  await server.listen(server_port, server_host);
-  server.blipp();
+  app.listen(PORT, () => {
+    console.log("Server start 5000");
+  });
 } catch (err) {
-  server.log.error(err);
+  console.log(err);
   process.exit(1);
 }
