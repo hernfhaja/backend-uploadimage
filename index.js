@@ -2,9 +2,10 @@ let express = require("express");
 let app = express();
 let bodyParser = require("body-parser");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 const cors = require("cors");
+
 const { excuteQuery } = require("./src/config/dbConnetion.ts");
 
 let PORT = process.env.PORT || 5000;
@@ -28,11 +29,7 @@ app.post("/", async (req, res) => {
 });
 
 //listen port
-try {
-  app.listen(PORT, () => {
-    console.log("Server start 5000");
-  });
-} catch (err) {
-  console.log(err);
-  process.exit(1);
-}
+
+app.listen(PORT, () => {
+  console.log("Server start 5000");
+});
