@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const sql = `insert into users(  sendername , name , timestamp) values (  '${req.body.sendername}' , '${req.body.name}' , current_timestamp )`;
+  const sql = `insert into users(  sendername , name ,imgurl, timestamp) values (  '${req.body.sendername}' , '${req.body.name}', '${req.body.imgurl}' , current_timestamp )`;
   const data = await excuteQuery(sql, []);
 
   return res.status(200).send("insert Success");
